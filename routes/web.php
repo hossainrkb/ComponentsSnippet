@@ -1,11 +1,13 @@
 <?php
 
-use App\Models\UploadTestFile;
 use App\Models\User;
+use App\Models\ExcelOne;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Route;
+use App\Models\UploadTestFile;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExcelOneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +58,8 @@ Route::post('add-file-to-server', function (Request $request) {
     return true;
 })->name('ajax_file_request');
 //File upload route list end
+
+//excel file upload start
+Route::get('add-excel-file-to-server-create',[ExcelOneController::class,'excelInportCreate']);
+Route::post('add-excel-file-to-server-store',[ExcelOneController::class,'excelInportStore']);
+//excel file upload end
